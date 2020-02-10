@@ -25,19 +25,22 @@ class NewsActivity : AppCompatActivity() {
             createFragment(NewsFragment(), savedInstanceState)
         }
     }
-    private fun createFragment (fragment : Fragment, bundle: Bundle?){
+
+    private fun createFragment(fragment: Fragment, bundle: Bundle?) {
         fragment.arguments = bundle
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragment_container,fragment)
+            .add(R.id.fragment_container, fragment)
             .addToBackStack(null)
             .commit()
     }
 
     override fun onBackPressed() {
-        showExitDialog(getString(R.string.exit_app))
-        super.onBackPressed()
-        println("back press")
+        if (supportFragmentManager.backStackEntryCount == 1) {
+            showExitDialog(getString(R.string.exit_app))
+        } else {
+            super.onBackPressed()
+        }
     }
 
 
@@ -46,11 +49,12 @@ class NewsActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setCancelable(false)
         builder.setMessage(message)
-        builder.setPositiveButton(getString(R.string.exit_button)) {
-                dialog, which -> finish()
+        builder.setPositiveButton(getString(R.string.exit_button)) { dialog, which ->
+            finish()
         }
-        builder.setNegativeButton(getString(R.string.cancel), DialogInterface.OnClickListener {
-                dialog, which -> return@OnClickListener })
+        builder.setNegativeButton(
+            getString(R.string.cancel),
+            DialogInterface.OnClickListener { dialog, which -> return@OnClickListener })
 
         val dialog = builder.create()
         dialog.show()

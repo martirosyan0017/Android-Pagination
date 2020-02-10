@@ -3,10 +3,10 @@ package com.example.paginglibrary.view.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.bumptech.glide.Glide
+
 import com.example.paginglibrary.R
 import com.example.paginglibrary.model.NewsModel
 import com.example.paginglibrary.view.adapter.viewholer.NewsViewHolder

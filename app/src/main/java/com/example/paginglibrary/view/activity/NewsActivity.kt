@@ -36,6 +36,7 @@ class NewsActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+
         if (supportFragmentManager.backStackEntryCount == 1) {
             showExitDialog(getString(R.string.exit_app))
         } else {

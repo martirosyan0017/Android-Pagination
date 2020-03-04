@@ -6,16 +6,18 @@ import android.view.ViewGroup
 
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import com.example.paginglibrary.utils.NewsItemClickListener
 
 import com.example.paginglibrary.R
 import com.example.paginglibrary.model.NewsModel
 import com.example.paginglibrary.view.adapter.viewholer.NewsViewHolder
 
-class NewsAdapter : PagedListAdapter<NewsModel, NewsViewHolder>(DIFF_CALLBACK) {
+class NewsAdapter (private var clickItem: NewsItemClickListener): PagedListAdapter<NewsModel, NewsViewHolder>(DIFF_CALLBACK) {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view,parent,false)
-        return NewsViewHolder(view)
+        return NewsViewHolder(view,clickItem)
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
@@ -33,7 +35,7 @@ class NewsAdapter : PagedListAdapter<NewsModel, NewsViewHolder>(DIFF_CALLBACK) {
                 }
 
                 override fun areContentsTheSame(oldItem: NewsModel, newItem: NewsModel): Boolean {
-                    return oldItem.equals(newItem)
+                    return oldItem == newItem
                 }
             }
     }

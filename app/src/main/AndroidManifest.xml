@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.activity.NewsActivity">
-
-        </activity>
-        <activity android:name=".view.activity.SplashScreen">
+        <activity android:name=".base.BaseActivity"/>
+        <activity android:name=".view.activity.NewsActivity" />
+        <activity android:name=".view.activity.SplashScreen"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

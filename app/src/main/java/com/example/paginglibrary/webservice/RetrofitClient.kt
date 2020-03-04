@@ -1,6 +1,6 @@
 package com.example.paginglibrary.webservice
 
-import com.example.paginglibrary.NetworkConstants
+import com.example.paginglibrary.utils.NetworkConstants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

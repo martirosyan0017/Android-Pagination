@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PageKeyedDataSource
 import androidx.paging.PagedList
-import com.example.paginglibrary.PagingConstants
+import com.example.paginglibrary.utils.PagingConstants
 import com.example.paginglibrary.model.NewsModel
 import com.example.paginglibrary.viewmodel.repository.NewsDataSourceFactory
 

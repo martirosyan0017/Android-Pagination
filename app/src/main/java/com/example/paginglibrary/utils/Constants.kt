@@ -1,4 +1,4 @@
-package com.example.paginglibrary
+package com.example.paginglibrary.utils
 
 object NetworkConstants {
     const val BASE_URL: String = "https://content.guardianapis.com/"
@@ -7,4 +7,8 @@ object NetworkConstants {
 object PagingConstants{
     const val PAGE_SIZE = 10
     var PAGE = 1
+}
+
+object BundleKey {
+    const val DETAIL_KEY = "model"
 }

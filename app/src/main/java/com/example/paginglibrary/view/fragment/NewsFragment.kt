@@ -1,29 +1,32 @@
 package com.example.paginglibrary.view.fragment
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.paginglibrary.utils.BundleKey
+import com.example.paginglibrary.utils.NewsItemClickListener
 import com.example.paginglibrary.R
+import com.example.paginglibrary.base.BaseFragment
 import com.example.paginglibrary.model.NewsModel
+import com.example.paginglibrary.view.activity.NewsActivity
 import com.example.paginglibrary.view.adapter.NewsAdapter
 import com.example.paginglibrary.viewmodel.NewsViewModel
-import com.github.ybq.android.spinkit.sprite.Sprite
-import com.github.ybq.android.spinkit.style.DoubleBounce
+import com.github.ybq.android.spinkit.SpinKitView
 import kotlinx.android.synthetic.main.fragment_news.*
 
-class NewsFragment : Fragment() {
+class NewsFragment : BaseFragment(), NewsItemClickListener {
 
     private lateinit var recyclerView1: RecyclerView
     private lateinit var newsViewModel: NewsViewModel
-    private lateinit var progressbar: ProgressBar
+    private lateinit var progressbar: SpinKitView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_news, container, false)
@@ -32,19 +35,13 @@ class NewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         findViews()
-        initProgressBar()
         initViewModel()
         getNews()
     }
 
-    private fun  initProgressBar(){
-        val doubleBounce: Sprite = DoubleBounce()
-        progressbar.indeterminateDrawable = doubleBounce
-    }
-
     private fun findViews() {
         recyclerView1 = recyclerview
-        progressbar = progress as ProgressBar
+        progressbar = progress
     }
 
     private fun initViewModel() {
@@ -53,7 +50,6 @@ class NewsFragment : Fragment() {
 
     private fun getNews() {
         progressbar.visibility = View.VISIBLE
-
         val observable = Observer<PagedList<NewsModel>?> {
             it?.let {
                 progressbar.visibility = View.INVISIBLE
@@ -64,9 +60,15 @@ class NewsFragment : Fragment() {
     }
 
     private val newsPagingAdapter by lazy {
-        val newsPagingAdapter = NewsAdapter()
+        val newsPagingAdapter = NewsAdapter(this)
         recyclerView1.layoutManager = GridLayoutManager(context, 1)
         recyclerView1.adapter = newsPagingAdapter
         return@lazy newsPagingAdapter
+    }
+
+    override fun onItemClicked(view: View, newsModel: NewsModel) {
+        val bundle = Bundle()
+        bundle.putParcelable(BundleKey.DETAIL_KEY, newsModel)
+        openFragment(R.id.fragment_container, NewsDetailFragment(),bundle)
     }
 }

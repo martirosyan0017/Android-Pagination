@@ -1,5 +1,9 @@
 package com.example.paginglibrary.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class NewsModel(
     val apiUrl: String,
     val fields: Fields? = null,
@@ -12,9 +16,8 @@ data class NewsModel(
     val type: String,
     val webPublicationDate: String,
     val webTitle: String,
-    val webUrl: String) {
+    val webUrl: String) : Parcelable {
 
-    data class Fields(
-        val thumbnail: String? = null
-    )
+    @Parcelize
+    data class Fields(val thumbnail: String? = null) : Parcelable
 }

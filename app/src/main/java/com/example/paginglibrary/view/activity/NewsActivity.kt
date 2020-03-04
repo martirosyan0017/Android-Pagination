@@ -18,8 +18,9 @@ class NewsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSpannable()
-        if (savedInstanceState == null)
-        createFragment(R.id.fragment_container,NewsFragment(),null)
+        if (savedInstanceState == null) {
+            createFragment(R.id.fragment_container, NewsFragment(),null)
+        }
     }
 
     override fun onBackPressed() {

@@ -6,7 +6,6 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import coil.api.load
 import coil.size.Scale
 import com.example.paginglibrary.R
@@ -18,7 +17,6 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class NewsDetailFragment : BaseFragment() {
 
     private var model: Any? = null
@@ -29,16 +27,6 @@ class NewsDetailFragment : BaseFragment() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             sharedElementEnterTransition =
                 TransitionInflater.from(context).inflateTransition(android.R.transition.move)
-        }
-    }
-
-
-    fun goBack(){
-        val fmManager: FragmentManager = activity!!.supportFragmentManager
-        if (fmManager.backStackEntryCount > 0) {
-            fmManager.popBackStack(fmManager.getBackStackEntryAt(fmManager.backStackEntryCount - 1).id,
-                FragmentManager.POP_BACK_STACK_INCLUSIVE
-            )
         }
     }
 

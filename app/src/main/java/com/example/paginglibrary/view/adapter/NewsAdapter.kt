@@ -12,13 +12,15 @@ import com.example.paginglibrary.R
 import com.example.paginglibrary.model.NewsModel
 import com.example.paginglibrary.view.adapter.viewholer.NewsViewHolder
 
-class NewsAdapter (private var clickItem: NewsItemClickListener): PagedListAdapter<NewsModel, NewsViewHolder>(DIFF_CALLBACK) {
-
+class NewsAdapter(private var clickItem: NewsItemClickListener) :
+    PagedListAdapter<NewsModel, NewsViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view,parent,false)
-        return NewsViewHolder(view,clickItem)
+        val view: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.recycler_view, parent, false)
+        return NewsViewHolder(view, clickItem)
     }
+
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val newsModel = getItem(position)
@@ -26,6 +28,7 @@ class NewsAdapter (private var clickItem: NewsItemClickListener): PagedListAdapt
             holder.bind(it)
         }
     }
+
 
     companion object {
         private val DIFF_CALLBACK: DiffUtil.ItemCallback<NewsModel> =

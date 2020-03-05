@@ -16,7 +16,8 @@ data class NewsModel(
     val type: String,
     val webPublicationDate: String,
     val webTitle: String,
-    val webUrl: String) : Parcelable {
+    val webUrl: String
+) : Parcelable {
 
     @Parcelize
     data class Fields(val thumbnail: String? = null) : Parcelable

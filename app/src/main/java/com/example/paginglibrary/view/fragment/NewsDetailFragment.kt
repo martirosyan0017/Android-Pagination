@@ -61,7 +61,8 @@ class NewsDetailFragment : BaseFragment() {
     }
 
     private fun getCurrentDateString(model: NewsModel) {
-        var df: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()) as DateFormat
+        var df: DateFormat =
+            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()) as DateFormat
         val d: Date? = df.parse(model.webPublicationDate)
         df = SimpleDateFormat("MMM d ,   h:mm a", Locale.getDefault())
         news_date_txt.text = df.format(d!!)

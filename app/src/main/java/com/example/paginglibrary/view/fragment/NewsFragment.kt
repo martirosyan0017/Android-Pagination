@@ -28,7 +28,11 @@ class NewsFragment : BaseFragment(), NewsItemClickListener {
     private lateinit var newsViewModel: NewsViewModel
     private lateinit var progressbar: SpinKitView
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_news, container, false)
     }
 
@@ -69,6 +73,8 @@ class NewsFragment : BaseFragment(), NewsItemClickListener {
     override fun onItemClicked(view: View, newsModel: NewsModel) {
         val bundle = Bundle()
         bundle.putParcelable(BundleKey.DETAIL_KEY, newsModel)
-        openFragment(R.id.fragment_container, NewsDetailFragment(),bundle)
+
+        (activity as NewsActivity?)?.createFr(R.id.fragment_container, NewsDetailFragment(),bundle)
+      //  openFragment(R.id.fragment_container, NewsFragment(), null)
     }
 }

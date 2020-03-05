@@ -1,6 +1,7 @@
 @file:Suppress("UNREACHABLE_CODE")
 
 package com.example.paginglibrary.utils
+
 import com.example.paginglibrary.model.NewsModel
 import com.google.gson.Gson
 import com.google.gson.internal.LinkedTreeMap
@@ -15,8 +16,7 @@ fun getNewsFromResponse(response: Response<Any>): ArrayList<NewsModel>? {
             val gson = Gson()
             val newsJson = gson.toJson(it)
             val type = object : com.google.gson.reflect.TypeToken<ArrayList<NewsModel>>() {}.type
-            val newsList = gson.fromJson<ArrayList<NewsModel>>(newsJson, type)
-            return newsList
+            return gson.fromJson<ArrayList<NewsModel>>(newsJson, type)
         }
         return@let null
     }

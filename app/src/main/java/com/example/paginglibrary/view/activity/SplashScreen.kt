@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 class SplashScreen : AppCompatActivity() {
 
-    private  var handler : Handler? = null
-    private  lateinit var runnable: Runnable
+    private var handler: Handler? = null
+    private lateinit var runnable: Runnable
     private val DELAY: Long = 1500
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +25,8 @@ class SplashScreen : AppCompatActivity() {
         getSpannable()
         setPostDelay()
     }
-    private fun setPostDelay (){
+
+    private fun setPostDelay() {
         handler = Handler()
 
         runnable = Runnable {
@@ -36,10 +37,12 @@ class SplashScreen : AppCompatActivity() {
         handler!!.postDelayed(runnable, DELAY)
     }
 
-    private fun getSpannable (){
+    private fun getSpannable() {
         val spannable = SpannableString("Daily News")
-        spannable.setSpan(ForegroundColorSpan(ContextCompat.getColor(this, R.color.NEWS_COLOR)),
-            0, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(this, R.color.NEWS_COLOR)),
+            0, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
         val mTextView: TextView = text_view
         mTextView.text = spannable
     }

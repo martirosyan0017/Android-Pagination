@@ -1,10 +1,9 @@
 package com.example.paginglibrary.viewmodel.repository
 
-import android.widget.ProgressBar
 import androidx.paging.PageKeyedDataSource
+import com.example.paginglibrary.model.NewsModel
 import com.example.paginglibrary.utils.PagingConstants
 import com.example.paginglibrary.utils.getNewsFromResponse
-import com.example.paginglibrary.model.NewsModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -13,7 +12,10 @@ class NewsDataSource(private val scope: CoroutineScope) : PageKeyedDataSource<In
     private lateinit var params: LoadParams<Int>
     private lateinit var callback: LoadCallback<Int, NewsModel>
 
-    override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, NewsModel>) {
+    override fun loadInitial(
+        params: LoadInitialParams<Int>,
+        callback: LoadInitialCallback<Int, NewsModel>
+    ) {
         scope.launch {
             try {
                 val newsInitialResponse =
@@ -35,7 +37,7 @@ class NewsDataSource(private val scope: CoroutineScope) : PageKeyedDataSource<In
                     }
                 }
             } catch (e: Exception) {
-               e.message
+                e.message
             }
         }
     }
@@ -107,7 +109,7 @@ class NewsDataSource(private val scope: CoroutineScope) : PageKeyedDataSource<In
                     }
                 }
             } catch (e: Exception) {
-               e.message
+                e.message
             }
         }
     }

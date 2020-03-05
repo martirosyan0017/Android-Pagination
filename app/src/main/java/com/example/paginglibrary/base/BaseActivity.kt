@@ -6,12 +6,7 @@ import androidx.fragment.app.Fragment
 
 open class BaseActivity : AppCompatActivity() {
 
-    fun createFragment(
-        resId: Int,
-        fragment: Fragment,
-        bundle: Bundle? = null,
-        updateScreen: Boolean = false
-    ) {
+    fun createFragment(resId: Int, fragment: Fragment, bundle: Bundle? = null, updateScreen: Boolean = false) {
         var mFragment = fragment
         val findFragment: Fragment? = supportFragmentManager.findFragmentById(resId)
         val existedFragment: Fragment? = supportFragmentManager.findFragmentByTag(mFragment.javaClass.name)

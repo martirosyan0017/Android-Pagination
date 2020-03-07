@@ -23,7 +23,6 @@ import com.github.ybq.android.spinkit.SpinKitView
 import kotlinx.android.synthetic.main.fragment_news.*
 
 class NewsFragment : BaseFragment(), NewsItemClickListener {
-
     private lateinit var recyclerView1: RecyclerView
     private lateinit var newsViewModel: NewsViewModel
     private lateinit var progressbar: SpinKitView
@@ -46,7 +45,6 @@ class NewsFragment : BaseFragment(), NewsItemClickListener {
     private fun findViews() {
         recyclerView1 = recyclerview
         progressbar = progress
-
         progressbar.setColor(resources.getColor(R.color.progress_color))
     }
 

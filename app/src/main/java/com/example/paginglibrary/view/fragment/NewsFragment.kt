@@ -46,6 +46,7 @@ class NewsFragment : BaseFragment(), NewsItemClickListener {
     private fun findViews() {
         recyclerView1 = recyclerview
         progressbar = progress
+
         progressbar.setColor(resources.getColor(R.color.progress_color))
     }
 

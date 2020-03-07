@@ -17,7 +17,7 @@
 
   <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/progress"
-        style="@style/SpinKitView.Large.CubeGrid"
+        style="@style/SpinKitView.Large.ThreeBounce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -25,4 +25,5 @@
         android:scrollbarDefaultDelayBeforeFade="5000"
         android:visibility="visible"
         app:SpinKit_Color="#E44F50" />
+
 </RelativeLayout>

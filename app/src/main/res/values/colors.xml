@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#052962</color>
     <color name="colorAccent">#052962</color>
     <color name="NEWS_COLOR">#FDF1C1</color>
+    <color name="progress_color">#E44F50</color>
 
 </resources>

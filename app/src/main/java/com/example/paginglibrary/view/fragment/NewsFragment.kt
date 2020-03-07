@@ -46,6 +46,7 @@ class NewsFragment : BaseFragment(), NewsItemClickListener {
     private fun findViews() {
         recyclerView1 = recyclerview
         progressbar = progress
+        progressbar.setColor(resources.getColor(R.color.progress_color))
     }
 
     private fun initViewModel() {
@@ -73,8 +74,6 @@ class NewsFragment : BaseFragment(), NewsItemClickListener {
     override fun onItemClicked(view: View, newsModel: NewsModel) {
         val bundle = Bundle()
         bundle.putParcelable(BundleKey.DETAIL_KEY, newsModel)
-
-        (activity as NewsActivity?)?.createFr(R.id.fragment_container, NewsDetailFragment(),bundle)
-      //  openFragment(R.id.fragment_container, NewsFragment(), null)
+        openFragment(R.id.fragment_container, NewsDetailFragment(), bundle)
     }
 }

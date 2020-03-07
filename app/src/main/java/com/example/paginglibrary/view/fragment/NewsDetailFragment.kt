@@ -25,8 +25,7 @@ class NewsDetailFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         postponeEnterTransition()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            sharedElementEnterTransition =
-                TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+            sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
         }
     }
 

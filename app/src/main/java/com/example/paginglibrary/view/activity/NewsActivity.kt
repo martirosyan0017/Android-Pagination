@@ -19,8 +19,8 @@ class NewsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSpannable()
-
-        createFragment(R.id.fragment_container, NewsFragment(), null,false)
+        if(savedInstanceState == null)
+        createFragment(R.id.fragment_container, NewsFragment(), null,true)
     }
 
     override fun onBackPressed() {
@@ -28,7 +28,8 @@ class NewsActivity : BaseActivity() {
 
         if (visibleFragment is NewsDetailFragment && getAllFragments().size == 1) {
             createFragment(R.id.fragment_container, NewsFragment(), null,true)
-        } else if (visibleFragment is NewsFragment) {
+        }
+        else if (visibleFragment is NewsFragment) {
             showExitDialog(getString(R.string.exit_app))
         } else {
             super.onBackPressed()
@@ -49,14 +50,5 @@ class NewsActivity : BaseActivity() {
             if (fragment.isVisible) return fragment
         }
         return null
-    }
-
-    private fun setSpannable() {
-        val spannable = SpannableString("Daily News")
-        spannable.setSpan(
-            ForegroundColorSpan(ContextCompat.getColor(this, R.color.NEWS_COLOR)),
-            0, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        val m1TextView: TextView = text_main_activity
-        m1TextView.text = spannable
     }
 }

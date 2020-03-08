@@ -25,9 +25,7 @@ class NewsDataSource(private val scope: CoroutineScope) : PageKeyedDataSource<In
                     when {
                         it.isSuccessful -> {
                             val newsList =
-                                getNewsFromResponse(
-                                    it
-                                )
+                                getNewsFromResponse(it)
                             PagingConstants.PAGE = PagingConstants.PAGE.plus(1)
                             callback.onResult(newsList!!, null, PagingConstants.PAGE)
                         }

@@ -7,7 +7,7 @@ import com.google.gson.Gson
 import com.google.gson.internal.LinkedTreeMap
 import retrofit2.Response
 
-fun getNewsFromResponse(response: Response<Any>): ArrayList<NewsModel>? {
+fun Any.getNewsFromResponse(response: Response<Any>): ArrayList<NewsModel>? {
     val newsLinked: LinkedTreeMap<*, *> = response.body() as LinkedTreeMap<*, *>
     val responseData: LinkedTreeMap<*, *> = newsLinked["response"] as LinkedTreeMap<*, *>
     responseData.let { it ->

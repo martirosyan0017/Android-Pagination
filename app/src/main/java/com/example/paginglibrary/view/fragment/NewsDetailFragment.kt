@@ -12,10 +12,8 @@ import com.example.paginglibrary.R
 import com.example.paginglibrary.base.BaseFragment
 import com.example.paginglibrary.model.NewsModel
 import com.example.paginglibrary.utils.BundleKey
+import com.example.paginglibrary.utils.getCurrentDateString
 import kotlinx.android.synthetic.main.fragment_news_detail.*
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.*
 
 class NewsDetailFragment : BaseFragment() {
 
@@ -48,23 +46,13 @@ class NewsDetailFragment : BaseFragment() {
             if (model is NewsModel) {
                 imageView.load(model.fields?.thumbnail) {
                     crossfade(750)
-                    placeholder(R.drawable.no_internet_icon)
                     scale(Scale.FILL)
                 }
                 news_section_name_txt.text = model.sectionName
                 news_title_txt.text = model.webTitle
                 type_.text = model.type
-                getCurrentDateString(model)
+                getCurrentDateString(news_date_txt,model)
             }
         }
-    }
-
-    private fun getCurrentDateString(model: NewsModel) {
-        var df: DateFormat =
-            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()) as DateFormat
-        val d: Date? = df.parse(model.webPublicationDate)
-        df = SimpleDateFormat("MMM d ,   h:mm a", Locale.getDefault())
-        news_date_txt.text = df.format(d!!)
-
     }
 }

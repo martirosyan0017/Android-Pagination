@@ -9,9 +9,7 @@ import coil.api.load
 import com.example.paginglibrary.utils.NewsItemClickListener
 import com.example.paginglibrary.R
 import com.example.paginglibrary.model.NewsModel
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.*
+import com.example.paginglibrary.utils.getCurrentDateString
 
 class NewsViewHolder(itemView: View, private val newsItemClickListener: NewsItemClickListener) :
     RecyclerView.ViewHolder(itemView) {
@@ -29,19 +27,12 @@ class NewsViewHolder(itemView: View, private val newsItemClickListener: NewsItem
         sectionName.text = news.sectionName
         type.text = news.type
         title.text = news.webTitle
-        getCurrentDateString(news)
+        getCurrentDateString(date,news)
 
         //click item
         rootRecyclerView.setOnClickListener {
             newsItemClickListener.onItemClicked(it, news)
         }
-    }
-
-    private fun getCurrentDateString(model: NewsModel) {
-        var df: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
-        val d: Date? = df.parse(model.webPublicationDate)
-        df = SimpleDateFormat("MMM d ,   h:mm a", Locale.getDefault())
-        date.text = df.format(d!!)
     }
 }
 

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.example.paginglibrary.utils.NewsItemClickListener
+import com.example.paginglibrary.listener.NewsItemClickListener
 
 import com.example.paginglibrary.R
 import com.example.paginglibrary.model.NewsModel
@@ -16,8 +16,7 @@ class NewsAdapter(private var clickItem: NewsItemClickListener) :
     PagedListAdapter<NewsModel, NewsViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.recycler_view, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view, parent, false)
         return NewsViewHolder(view, clickItem)
     }
 

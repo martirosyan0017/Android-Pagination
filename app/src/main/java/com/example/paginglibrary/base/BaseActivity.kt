@@ -1,17 +1,17 @@
 package com.example.paginglibrary.base
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.paginglibrary.R
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -19,8 +19,8 @@ open class BaseActivity : AppCompatActivity() {
         resId: Int,
         fragment: Fragment,
         bundle: Bundle? = null,
-        updateScreen: Boolean = false
-    ) {
+        updateScreen: Boolean = false) {
+
         var mFragment = fragment
         val findFragment: Fragment? = supportFragmentManager.findFragmentById(resId)
         val existedFragment: Fragment? = supportFragmentManager.findFragmentByTag(mFragment.javaClass.name)
@@ -47,21 +47,6 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun showExitDialog(message: String) {
-
-        val builder = AlertDialog.Builder(this)
-        builder.setMessage(message)
-        builder.setPositiveButton(getString(R.string.exit_button)) { _, _ ->
-            finish()
-        }
-        builder.setNegativeButton(
-            getString(R.string.cancel),
-            DialogInterface.OnClickListener { _, _ -> return@OnClickListener })
-
-        val dialog = builder.create()
-        dialog.show()
-    }
-
     fun setSpannable() {
         val spannable = SpannableString("Daily News")
         spannable.setSpan(
@@ -70,5 +55,13 @@ open class BaseActivity : AppCompatActivity() {
         )
         val m1TextView: TextView = text_main_activity
         m1TextView.text = spannable
+    }
+
+    fun loader(state: Boolean) {
+        if (state) {
+            progress.visibility = View.VISIBLE
+        } else {
+            progress.visibility = View.GONE
+        }
     }
 }

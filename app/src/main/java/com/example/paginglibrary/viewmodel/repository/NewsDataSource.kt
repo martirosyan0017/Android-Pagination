@@ -2,8 +2,8 @@ package com.example.paginglibrary.viewmodel.repository
 
 import androidx.paging.PageKeyedDataSource
 import com.example.paginglibrary.model.NewsModel
-import com.example.paginglibrary.utils.PagingConstants
-import com.example.paginglibrary.utils.getNewsFromResponse
+import com.example.paginglibrary.PagingConstants
+import com.example.paginglibrary.extentions.getNewsFromResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

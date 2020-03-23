@@ -11,8 +11,8 @@ import coil.size.Scale
 import com.example.paginglibrary.R
 import com.example.paginglibrary.base.BaseFragment
 import com.example.paginglibrary.model.NewsModel
-import com.example.paginglibrary.utils.BundleKey
-import com.example.paginglibrary.utils.getCurrentDateString
+import com.example.paginglibrary.BundleKey
+import com.example.paginglibrary.extentions.getCurrentDateString
 import kotlinx.android.synthetic.main.fragment_news_detail.*
 
 class NewsDetailFragment : BaseFragment() {
@@ -27,11 +27,7 @@ class NewsDetailFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_news_detail, container, false)
     }
 

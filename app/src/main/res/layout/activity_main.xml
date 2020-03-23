@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimaryDark"
     tools:context=".view.activity.NewsActivity">
 
@@ -13,17 +13,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/text_main_activity"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/colorPrimaryDark"
-            android:gravity="bottom|right|top"
-            android:paddingRight="25dp"
-            android:textColor="#E44F50"
-            android:textSize="38sp"
-            android:textStyle="italic|bold"
-            tools:ignore="RtlHardcoded,RtlSymmetry" />
+        <include layout="@layout/toolbar_layout"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -37,6 +28,18 @@
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
     </LinearLayout>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/progress"
+            style="@style/SpinKitView.Large.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:scrollbarDefaultDelayBeforeFade="5000"
+        android:visibility="visible"
+        app:SpinKit_Color="#E44F50"/>
 
 </RelativeLayout>

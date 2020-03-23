@@ -1,37 +1,38 @@
 package com.example.paginglibrary.view.fragment
 
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.paginglibrary.utils.BundleKey
-import com.example.paginglibrary.utils.NewsItemClickListener
+import com.example.paginglibrary.BundleKey
+import com.example.paginglibrary.listener.NewsItemClickListener
 import com.example.paginglibrary.R
 import com.example.paginglibrary.base.BaseFragment
 import com.example.paginglibrary.model.NewsModel
-import com.example.paginglibrary.view.activity.NewsActivity
+import com.example.paginglibrary.PagingState.ITEM_END_LOADED
+import com.example.paginglibrary.PagingState.ITEM_FRONT_LOADED
+import com.example.paginglibrary.base.BaseActivity
 import com.example.paginglibrary.view.adapter.NewsAdapter
 import com.example.paginglibrary.viewmodel.NewsViewModel
-import com.github.ybq.android.spinkit.SpinKitView
 import kotlinx.android.synthetic.main.fragment_news.*
 
-class NewsFragment : BaseFragment(), NewsItemClickListener {
+class NewsFragment : BaseFragment(),
+    NewsItemClickListener {
     private lateinit var recyclerView1: RecyclerView
     private lateinit var newsViewModel: NewsViewModel
-    private lateinit var progressbar: SpinKitView
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as BaseActivity).loader(true)
         return inflater.inflate(R.layout.fragment_news, container, false)
     }
 
@@ -40,12 +41,11 @@ class NewsFragment : BaseFragment(), NewsItemClickListener {
         findViews()
         initViewModel()
         getNews()
+        pagingState()
     }
 
     private fun findViews() {
         recyclerView1 = recyclerview
-        progressbar = progress
-        progressbar.setColor(resources.getColor(R.color.progress_color))
     }
 
     private fun initViewModel() {
@@ -53,14 +53,27 @@ class NewsFragment : BaseFragment(), NewsItemClickListener {
     }
 
     private fun getNews() {
-        progressbar.visibility = View.VISIBLE
         val observable = Observer<PagedList<NewsModel>?> {
             it?.let {
-                progressbar.visibility = View.INVISIBLE
                 newsPagingAdapter.submitList(it)
             }
         }
         newsViewModel.itemPagedList?.observe(this, observable)
+    }
+
+    private fun pagingState() {
+        val observer = Observer<String> {
+            when (it) {
+                ITEM_END_LOADED -> {
+                    (activity as BaseActivity).loader(false)
+                }
+                ITEM_FRONT_LOADED -> {
+                    (activity as BaseActivity).loader(false)
+                }
+            }
+        }
+
+        newsViewModel.pagingStateLiveData.observe(this, observer)
     }
 
     private val newsPagingAdapter by lazy {

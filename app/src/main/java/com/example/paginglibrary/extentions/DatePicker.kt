@@ -1,4 +1,4 @@
-package com.example.paginglibrary.utils
+package com.example.paginglibrary.extentions
 
 import android.widget.TextView
 import com.example.paginglibrary.model.NewsModel

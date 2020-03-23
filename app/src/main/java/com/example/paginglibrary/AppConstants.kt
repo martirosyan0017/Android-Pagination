@@ -1,4 +1,4 @@
-package com.example.paginglibrary.utils
+package com.example.paginglibrary
 
 object NetworkConstants {
     const val BASE_URL: String = "https://content.guardianapis.com/"
@@ -6,10 +6,15 @@ object NetworkConstants {
 }
 
 object PagingConstants {
-    const val PAGE_SIZE = 10
+    const val PAGE_SIZE = 5
     var PAGE = 1
 }
 
 object BundleKey {
     const val DETAIL_KEY = "model"
+}
+
+object PagingState {
+    const val ITEM_END_LOADED = "ItemAtEndLoaded"
+    const val ITEM_FRONT_LOADED = "ItemAtFrontLoaded"
 }

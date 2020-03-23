@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.paginglibrary.R
+import kotlinx.android.synthetic.main.activity_main.*
 
 open class BaseFragment : Fragment() {
 
@@ -21,4 +22,5 @@ open class BaseFragment : Fragment() {
         val parentActivity: BaseActivity? = activity as BaseActivity?
         parentActivity?.createFragment(resId, fragment, bundle)
     }
+
 }

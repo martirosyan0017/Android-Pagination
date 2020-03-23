@@ -1,6 +1,6 @@
 package com.example.paginglibrary.webservice
 
-import com.example.paginglibrary.utils.NetworkConstants
+import com.example.paginglibrary.NetworkConstants
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

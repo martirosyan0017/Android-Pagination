@@ -6,10 +6,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import com.example.paginglibrary.utils.NewsItemClickListener
+import com.example.paginglibrary.listener.NewsItemClickListener
 import com.example.paginglibrary.R
 import com.example.paginglibrary.model.NewsModel
-import com.example.paginglibrary.utils.getCurrentDateString
+import com.example.paginglibrary.extentions.getCurrentDateString
 
 class NewsViewHolder(itemView: View, private val newsItemClickListener: NewsItemClickListener) :
     RecyclerView.ViewHolder(itemView) {

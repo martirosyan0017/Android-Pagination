@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark"
+        android:minHeight="?attr/actionBarSize"
+        android:padding="1dp"
+        app:titleTextColor="@android:color/white">
+
+        <TextView
+            android:id="@+id/text_main_activity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|right|top"
+            android:paddingRight="25dp"
+            android:textColor="#E44F50"
+            android:textSize="38sp"
+            android:textStyle="italic|bold"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+    </androidx.appcompat.widget.Toolbar>
+</FrameLayout>

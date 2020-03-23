@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.paginglibrary.R
 import kotlinx.android.synthetic.main.activity_splash_screen.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class SplashScreen : AppCompatActivity() {
 
@@ -21,8 +22,6 @@ class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-
-        getSpannable()
         setPostDelay()
     }
 
@@ -35,16 +34,6 @@ class SplashScreen : AppCompatActivity() {
             }
         }
         handler!!.postDelayed(runnable, DELAY)
-    }
-
-    private fun getSpannable() {
-        val spannable = SpannableString("Daily News")
-        spannable.setSpan(
-            ForegroundColorSpan(ContextCompat.getColor(this, R.color.NEWS_COLOR)),
-            0, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        val mTextView: TextView = text_view
-        mTextView.text = spannable
     }
 
     public override fun onDestroy() {

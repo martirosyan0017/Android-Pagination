@@ -1,4 +1,4 @@
-package com.example.paginglibrary.utils
+package com.example.paginglibrary.listener
 
 import android.view.View
 import com.example.paginglibrary.model.NewsModel

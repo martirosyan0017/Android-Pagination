@@ -1,6 +1,6 @@
 @file:Suppress("UNREACHABLE_CODE")
 
-package com.example.paginglibrary.utils
+package com.example.paginglibrary.extentions
 
 import com.example.paginglibrary.model.NewsModel
 import com.google.gson.Gson

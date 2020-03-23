@@ -62,6 +62,7 @@ class NewsActivity : BaseActivity() {
     }
 
     override fun onPause() {
+
         //  remove broadcast receiver when activity stops
         unregisterReceiver(broadCastReceiver)
         super.onPause()
